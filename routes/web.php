@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -92,75 +93,7 @@ Route::get('pesan/{makanan?}/{minuman?}/{cemilan?}', function ($a = null , $b = 
 
 
     return"$pesan";
-});
-
-// buatlah sebuah route bernama biodata
-// didalamnya ada 5 variabel
-// nama,umur,alamat,cita2,hobi
-// kirim data tsb ke view yang bernama biodata 
-
-Route::get('biodata', function () {
-    $nama = "Ripa Noval";
-    $umur = 18;
-    $alamat = "Gg.H.Sabana";
-    $cita = "Bobo";
-    $hobi = "main game";
-    return view('biodata', compact('nama','umur','alamat','cita','hobi'));
-});
-
-Route::get('barang', function () {
-    $id_barang = 1100;
-    $nama_barang = "indomei";
-    $harga = 3000;
-    $stok = 10;
-    $id_supplier = 1200;
-    return view('barang', compact('id_barang','nama_barang','harga','stok','id_supplier'));
-});
-
-Route::get('supplier', function () {
-    $id_supplier = 1200;
-    $nama_supplier = "Ripa Noval";
-    $no_telp = "089524771684";
-    $alamat = "Gg.H.Sabana";
-    return view('supplier', compact('id_supplier','nama_supplier','no_telp','alamat'));
-});
-
-Route::get('transaksi', function () {
-    $id_transaksi = 42140;
-    $id_barang = 1100;
-    $id_pembeli = 1;
-    $tanggal = "03 Oktober 2101";
-    $keterangan = "Pembelian";
-    return view('transaksi', compact('id_transaksi','id_barang','id_pembeli','tanggal','keterangan'));
-});
-
-Route::get('pembayaran', function () {
-    $id_pembayar = 2;
-    $tgl_bayar = "24 November 2031";
-    $total_bayar = "Rp 120.000.00";
-    $id_transaksi = 42140;
-    return view('pembayaran', compact('id_pembayar','tgl_bayar','total_bayar','id_transaksi'));
-});
-
-Route::get('pembelian', function () {
-    $id_pembeli = 1;
-    $nama_pembeli = "Ucup";
-    $jk = "Laki-Laki";
-    $no_telp = "089524771621";
-    $alamat = "Gg.H.Sabana RT 03 RW 13";
-    return view('pembelian', compact('id_pembeli','nama_pembeli','jk','no_telp','alamat'));
-});
-
-Route::get('book', function () {
-    $books = [
-        ['id'=>1,'title'=>'Belajar Laravel Itu Mudah'],
-        ['id'=>2,'title'=>'Belajar Baca Huruf'],
-        ['id'=>3,'title'=>'Belajar Baca Aksara Sunda'],
-    ];
-
-    return view('book', compact('books'));
-});
-
+}); 
 
 
 Route::get('film', function () {
@@ -201,3 +134,52 @@ Route::get('film', function () {
 });
 
 
+Route::get('/testmodel', function () {
+    $query = App\Models\Post::all();
+  return $query;
+});
+
+Route::get('/testmodel2', function () {
+    $query = App\Models\Post::find(1);
+  return $query;
+});
+
+
+Route::get('/testmodel3', function () {
+    $query = App\Models\Post::where('title','like','%cepat nikah%')->get();
+  return $query;
+});
+
+Route::get('/testpost', function (){
+    $query = App\Models\Post::all();
+    return view('best-post' , compact('query'));
+
+});
+
+Route::get('/hero', function (){
+    $query = App\Models\Post::all();
+    return view('hero' , compact('query'));
+
+});
+
+
+// Route view
+Route::get('tentang', function () {
+    return view('beranda');
+});
+
+// Route Conttoller
+
+Route::get('latihan-controller', [MyController::class, 'latihan']);
+
+Route::get('biodata-saya', [MyController::class, 'biodatasaya']);
+
+Route::get('barang/{id}', [MyController::class, 'barang']);
+
+Route::get('pembelian/{id}', [MyController::class, 'pembelian']);
+
+Route::get('pembeli/{id}', [MyController::class, 'pembeli']);
+
+Route::get('pesanan/{id}', [MyController::class, 'pesanan']);
+
+Route::get('suplier/{id}', [MyController::class, 'suplier']);

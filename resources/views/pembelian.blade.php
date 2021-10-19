@@ -7,11 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-    <center>Biodata Siswa</center>
-    @foreach($bio as $data)
-    {{$data->name}} - {{$data->gender}} <br>
-    {{$data->height}} - {{$data->weight}} <br>
-    {{$data->borndate}}
-    @endforeach
+    <h1>Pembelian</h1><br>
+    <b>{{$pembelian->nama_barang}}</b><br>
+    <b>{{$pembelian->nama_suplier}}</b><br>
+    <b>{{$pembelian->qyt}}</b><br>
+    <b>{{$pembelian->tgl}}</b>
+    <hr>
 </body>
 </html>

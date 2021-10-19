@@ -7,11 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Barang</h1><br>
-    <b>{{$barang->nama}}</b><br>
-    <b>{{$barang->varisan}}</b><br>
-    <b>{{$barang->harga_beli}}</b><br>
-    <b>{{$barang->harga_jual}}</b>
+    <h1>Pembeli</h1><br>
+    <b>{{$pembeli->nama}}</b><br>
+    <b>{{$pembeli->jns_kelamin}}</b><br>
+    <b>{{$pembeli->alamat}}</b><br>
+    <b>{{$pembeli->kode_post}}</b><br>
+    <b>{{$pembeli->kota}}</b><br>
+    <b>{{$pembeli->tgl_lahir}}</b>
     <hr>
 </body>
 </html>

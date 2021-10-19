@@ -7,11 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <center>Biodata Siswa</center>
-    @foreach($bio as $data)
-    {{$data->name}} - {{$data->gender}} <br>
-    {{$data->height}} - {{$data->weight}} <br>
-    {{$data->borndate}}
-    @endforeach
+    Data dari controller <br>
+    <b>{{$result}}</b>
 </body>
 </html>
